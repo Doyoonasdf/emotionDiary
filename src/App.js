@@ -33,12 +33,45 @@ const reducer = (state, action) => {
 	return newState;
 };
 
-export const DairyStateContext = React.createContext();
-export const DairyDispatchContext = React.createContext();
-function App() {
-	const [data, dispatch] = useReducer(reducer, []);
-	const dataId = useRef(0);
+export const DiaryStateContext = React.createContext();
+export const DiaryDispatchContext = React.createContext();
 
+const dummyData = [
+	{
+		id: 1,
+		emotion: 1,
+		content: '오늘의일기1번',
+		date: 1693743566505,
+	},
+	{
+		id: 2,
+		emotion: 2,
+		content: '오늘의일기2번',
+		date: 1693743566506,
+	},
+	{
+		id: 3,
+		emotion: 3,
+		content: '오늘의일기3번',
+		date: 1693743566507,
+	},
+	{
+		id: 4,
+		emotion: 4,
+		content: '오늘의일기4번',
+		date: 1693743566508,
+	},
+	{
+		id: 5,
+		emotion: 5,
+		content: '오늘의일기5번',
+		date: 1693743566509,
+	},
+];
+function App() {
+	const [data, dispatch] = useReducer(reducer, dummyData);
+	const dataId = useRef(0);
+	console.log(new Date().getTime());
 	// CREATE
 	const onCreate = (date, content, emotion) => {
 		dispatch({
@@ -70,8 +103,8 @@ function App() {
 		});
 	};
 	return (
-		<DairyStateContext.Provider value={data}>
-			<DairyDispatchContext.Provider value={{ onCreate, onRemove, onEdit }}>
+		<DiaryStateContext.Provider value={data}>
+			<DiaryDispatchContext.Provider value={{ onCreate, onRemove, onEdit }}>
 				<BrowserRouter>
 					<div className='App'>
 						<Routes>
@@ -82,8 +115,8 @@ function App() {
 						</Routes>
 					</div>
 				</BrowserRouter>
-			</DairyDispatchContext.Provider>
-		</DairyStateContext.Provider>
+			</DiaryDispatchContext.Provider>
+		</DiaryStateContext.Provider>
 	);
 }
 
