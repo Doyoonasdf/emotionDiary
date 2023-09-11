@@ -60,7 +60,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
 				onEdit(originData.id, date, content, emotion);
 			}
 		}
-		onCreate(date, content, emotion);
+
 		navigate('/', { replace: true });
 	};
 
