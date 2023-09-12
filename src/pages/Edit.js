@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useState, useContext, useEffect } from 'react';
 import { DiaryStateContext } from '../App';
 import DiaryEditor from '../components/DiaryEditor';
+import { getStringDate } from '../util/date';
 const Edit = () => {
 	const [originData, setOriginData] = useState();
 	const navigate = useNavigate();
