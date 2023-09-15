@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useState, useRef, useContext, useEffect } from 'react';
+import { useState, useRef, useContext, useEffect, useCallback } from 'react';
 import { DiaryDispatchContext } from './../App.js';
 import MyHeader from './MyHeader';
 import MyButton from './MyButton';
@@ -14,9 +14,10 @@ const DiaryEditor = ({ isEdit, originData }) => {
 	const [date, setDate] = useState(getStringDate(new Date()));
 
 	const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
-	const handleClickEmote = (emotion) => {
+	const handleClickEmote = useCallback((emotion) => {
 		setEmotion(emotion);
-	};
+	}, []);
+
 	const navigate = useNavigate();
 
 	const handleSubmit = () => {
